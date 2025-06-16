@@ -1,5 +1,6 @@
 import requests,json,os
 from dotenv import load_dotenv
+from pathlib import Path
 load_dotenv()
 
 def get_submission_id():
@@ -20,22 +21,13 @@ def get_submission_id():
     }
     problem_slug="best-time-to-buy-and-sell-stock"
     submission_url=f"https://leetcode.com/problems/{problem_slug}/submit/"
+    cpp=Path('main.cpp')
+    typed_code=cpp.read_text()
+    print(typed_code)
     payload = {
         "lang": "cpp", # Change to the appropriate language slug (e.g., "python3", "java")
         "question_id": "121", # Change to the actual question_id for the problem
-        "typed_code": """class Solution {
-    public:
-        int maxProfit(vector<int>& prices) {
-            int start=0;
-            int maxpri=0;
-            for(int i=0;i<prices.size();i++){
-                if(prices[i]<prices[start]) start=i;
-                maxpri=max(maxpri,prices[i]-prices[start]);
-            }
-            return maxpri;
-        }
-    };"""
-    }
+        "typed_code":typed_code}
     submit_response=requests.post(
         submission_url,
         headers=headers,
