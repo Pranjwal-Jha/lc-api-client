@@ -15,18 +15,20 @@ def get_submission_id():
         "Content-Type": "application/json",
         "x-csrftoken": csrf_token,
         "Cookie": f"LEETCODE_SESSION={session}; csrftoken={csrf_token}",
-        "Referer": "https://leetcode.com/", # Often required for submission endpoints
+        "Referer": "https://leetcode.com/", 
         "Origin": "https://leetcode.com",
-        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36", #!imp
     }
-    problem_slug="best-time-to-buy-and-sell-stock"
+    problem_slug=input("Enter -> ")
+    problem_slug="-".join(problem_slug.strip().lower().split())
+    # problem_slug="best-time-to-buy-and-sell-stock"
     submission_url=f"https://leetcode.com/problems/{problem_slug}/submit/"
     cpp=Path('main.cpp')
-    typed_code=cpp.read_text()
+    typed_code=cpp.read_text(encoding='utf-8')
     print(typed_code)
     payload = {
-        "lang": "cpp", # Change to the appropriate language slug (e.g., "python3", "java")
-        "question_id": "121", # Change to the actual question_id for the problem
+        "lang": "cpp", 
+        "question_id": "121", 
         "typed_code":typed_code}
     submit_response=requests.post(
         submission_url,
