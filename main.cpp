@@ -10,6 +10,6 @@ public:
         start = i;
       maxpri = max(maxpri, prices[i] - prices[start]);
     }
-    return maxpri;
+    return 0;
   }
 };

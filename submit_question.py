@@ -19,9 +19,9 @@ def get_submission_id():
         "Origin": "https://leetcode.com",
         "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36", #!imp
     }
-    problem_slug=input("Enter -> ")
-    problem_slug="-".join(problem_slug.strip().lower().split())
-    # problem_slug="best-time-to-buy-and-sell-stock"
+    # problem_slug=input("Enter -> ")
+    # problem_slug="-".join(problem_slug.strip().lower().split())
+    problem_slug="best-time-to-buy-and-sell-stock"
     submission_url=f"https://leetcode.com/problems/{problem_slug}/submit/"
     cpp=Path('main.cpp')
     typed_code=cpp.read_text(encoding='utf-8')

@@ -37,7 +37,9 @@ def get_submission_detail():
             print(f"Status not final, waiting for {check_delay} seconds")
             time.sleep(check_delay)
 
-    print(f"The code ran {'Successfully' if check_data.get('run_success') else 'Failed'}")
-
+    # print(f"The code ran {'Successfully' if check_data.get('run_success') else 'Failed'}")
+    print(check_data)
+    print("Success -> ",check_data.get("status_msg"))
+    print(f"Failed on test case {check_data.get("last_testcase")}")
 if __name__=='__main__':
     get_submission_detail()
